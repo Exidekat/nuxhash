@@ -26,7 +26,7 @@ from nuxhash.version import __version__
 
 BENCHMARK_SECS = 60
 DONATE_PROB = 0.005
-DONATE_ADDRESS = '3DJBpNcgP3Pihw45p9544PK6TbbYeMcnk7'
+DONATE_ADDRESS = '3DJBpNcgP3Pihw45p9544PK6TbbYeMcnk7'  # <3 u ryan
 
 
 def main():
@@ -129,17 +129,20 @@ def terminate():
 def initial_setup():
     print('nuxhashd initial setup')
 
-    wallet = ''
+    wallet = '3HcyBekWBiKcbT2gzeAAo5FMUxdTQtLiZv'
+    '''wallet = ''
     while not check_bc(wallet):
-        wallet = input('Wallet address: ')
+        wallet = input('Wallet address: ')'''
 
-    workername = input('Worker name: ')
+    workername = "ubuntukraken"
+    '''workername = input('Worker name: ')
     if workername == '':
-        workername = 'nuxhash'
+        workername = 'nuxhash' '''
 
-    region = ''
+    region = 'usa'
+    '''region = ''
     while region not in ['eu', 'usa', 'hk', 'jp', 'in', 'br']:
-        region = input('Region (eu/usa/hk/jp/in/br): ')
+        region = input('Region (eu/usa/hk/jp/in/br): ')'''
 
     print()
     return wallet, workername, region
@@ -188,6 +191,7 @@ def run_benchmarks(targets):
             benchmarks[device][algorithm.name] = run_benchmark(device, algorithm)
         except MinerNotRunning:
             print(f'  {algorithm.name}: failed to complete benchmark     ')
+            print(f'\t\t{MinerNotRunning}')
             benchmarks[device][algorithm.name] = [0.0]*len(algorithm.algorithms)
         except KeyboardInterrupt:
             print('Benchmarking aborted (completed benchmarks saved).')
